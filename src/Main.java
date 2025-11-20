@@ -3,5 +3,6 @@ public class Main {
         System.out.println("hello eworld");
         System.out.println(" evil hello world");
         System.out.println("bludasdasdasdsadasdasdasddHELP");
+        System.out.println("NOW ONLINE");
     }
 }
