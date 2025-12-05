@@ -1,14 +1,11 @@
 public class Main {
     public static void main(String[] args) {
         StringLoops loops = new StringLoops();
-        loops.commaSeparated(0, 5);
-        loops.commaSeparated(-3, 2);
-        loops.commaSeparated(8, 1);
-        loops.commaSeparated(-4, -10);
-        loops.commaSeparated(4, 4);
-        loops.commaSeparated(0, 0);
-        loops.commaSeparated(0, 1);
-        loops.commaSeparated(-3, 12);
-
+        loops.multiPrint("hello", 4);
+        loops.multiPrint("beetlejuice", 3);
+        loops.multiPrint("hi there", 2);
+        loops.multiPrint("boop!", 1);
+        loops.multiPrint("dance party", 0);
+        loops.multiPrint("anything", -4);
     }
 }
