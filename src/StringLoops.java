@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class StringLoops {
     // default constructor; no instance variables
     public StringLoops() {
@@ -242,5 +244,98 @@ public class StringLoops {
         System.out.println();
     }
 
+
+//    Given a string, return the sum of the numbers appearing in the string,
+//    ignoring all other characters. A number is a series of 1 or more
+//    digit chars in a row. (Note: Character.isDigit(char) tests if a char is one
+//    of the chars '0', '1', .. '9'. Integer.parseInt(string) converts a string to an int.)
+//    sumNumbers("abc123xyz") → 123
+//    sumNumbers("aa11b33") → 44
+//    sumNumbers("7 11") → 18
+    public int sumNumbers(String str) {
+        int sum = 0;
+        String stringNum = "";
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i))) {
+                stringNum+=(str.substring(i, i + 1));
+            }else{
+                if (!stringNum.isEmpty()){
+                    sum += Integer.parseInt(stringNum);
+                }
+                stringNum = "";
+            }
+        }
+        if (!stringNum.isEmpty()){
+            sum += Integer.parseInt(stringNum);
+        }
+        return sum;
+    }
+
+
+//    Given a string, return true if the number of appearances
+//    of "is" anywhere in the string is equal to the number of appearances
+//    of "not" anywhere in the string (case sensitive).
+//    equalIsNot("This is not") → false
+//    equalIsNot("This is notnot") → true
+//    equalIsNot("noisxxnotyynotxisi") → true
+
+    public boolean equalIsNot(String str) {
+        int isValue = 0;
+        int notValue = 0;
+        while (str.contains("is")){
+            str = str.substring(0,str.indexOf("is")) + str.substring(str.indexOf("is")+2);
+            isValue++;
+        }
+        while (str.contains("not")){
+            str = str.substring(0,str.indexOf("not")) + str.substring(str.indexOf("not")+2);
+            notValue++;
+        }
+
+        return (isValue == notValue);
+    }
+
+//    Given a string, return the longest substring that appears at both the beginning
+//    and end of the string without overlapping. For example, sameEnds("abXab") is "ab".
+//
+//
+//    sameEnds("abXYab") → "ab"
+//    sameEnds("xx") → "x"
+//    sameEnds("xxx") → "x"
+
+    public String sameEnds(String string) {
+        String end = "";
+        int length = string.length() / 2;
+        for (int i = 0; i < length; i++) {
+                end += "" + string.charAt(i);
+        }
+        while (!string.endsWith(end)){
+            end = end.substring(0, end.length()-1);
+        }
+        return end;
+    }
+
+
+//    We'll say that a "triple" in a string is a char appearing
+//    three times in a row. Return the number of triples in the
+//    given string. The triples may overlap.
+//    countTriple("abcXXXabc") → 1
+//    countTriple("xxxabyyyycd") → 3
+//    countTriple("a") → 0
+    public int countTriple(String str) {
+        int counter = 0;
+
+        if (str.length() < 3){
+            return 0;
+        }
+
+        for (int i = 0; i < str.length() - 2; i++) {
+
+        if (str.charAt(i) == str.charAt(i+1) && str.charAt(i+1) == str.charAt(i+2)){
+        counter++;
+        }
+
+        }
+        return counter;
+    }
 
 }
